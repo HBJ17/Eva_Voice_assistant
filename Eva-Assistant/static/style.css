@@ -1,0 +1,182 @@
+:root {
+    --bg-color: #0f172a;
+    --text-color: #f8fafc;
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+    --card-bg: #1e293b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--card-bg);
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-indicator {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #cbd5e1;
+    min-height: 1.5rem;
+}
+
+/* Neat Wave Animation */
+.wave-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 60px;
+    opacity: 0.2; /* Dim when not active */
+    transition: opacity 0.3s ease;
+}
+
+.wave-container.active {
+    opacity: 1; /* Bright when active */
+}
+
+.wave-bar {
+    width: 6px;
+    height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 3px;
+    animation: wave 1.2s infinite ease-in-out;
+}
+
+/* Different delays so they don't bounce at the same time */
+.wave-bar:nth-child(1) { animation-delay: -1.2s; }
+.wave-bar:nth-child(2) { animation-delay: -1.0s; }
+.wave-bar:nth-child(3) { animation-delay: -0.8s; }
+.wave-bar:nth-child(4) { animation-delay: -0.6s; }
+.wave-bar:nth-child(5) { animation-delay: -0.4s; }
+
+/* Stop animation when not active */
+.wave-container:not(.active) .wave-bar {
+    animation: none;
+    height: 10px !important;
+}
+
+@keyframes wave {
+    0%, 40%, 100% {
+        height: 10px;
+    }
+    20% {
+        height: 40px;
+    }
+}
+
+.mic-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.mic-btn:hover {
+    background-color: var(--accent-hover);
+    transform: scale(1.05);
+}
+
+.mic-btn svg {
+    width: 30px;
+    height: 30px;
+}
+
+.mic-btn.listening {
+    background-color: #ef4444;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.chat-log {
+    margin-top: 1.5rem;
+    text-align: left;
+    max-height: 150px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.message {
+    padding: 10px 14px;
+    border-radius: 12px;
+    max-width: 90%;
+    line-height: 1.4;
+}
+
+.message.user {
+    background-color: #334155;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.message.eva {
+    background-color: var(--accent-color);
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+/* Custom Scrollbar for chat log */
+.chat-log::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-log::-webkit-scrollbar-thumb {
+    background-color: #475569;
+    border-radius: 10px;
+}
