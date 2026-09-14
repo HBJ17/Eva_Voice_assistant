@@ -1,6 +1,6 @@
 # Eva - Enhanced Voice Assistant
 
-Eva is a web-based, AI-powered voice assistant built with Python (Flask) and vanilla web technologies (HTML, CSS, JavaScript). It uses the Web Speech API for voice recognition and synthesis, and integrates with Wikipedia to answer questions dynamically.
+Eva is a web-based voice assistant built with **Flask, HTML, and CSS**, packaged with **Docker**. It uses the browser's Web Speech API for voice recognition and synthesis, and integrates with Wikipedia to answer questions dynamically.
 
 ## Features
 
@@ -14,6 +14,7 @@ Eva is a web-based, AI-powered voice assistant built with Python (Flask) and van
 - **Backend**: Python, Flask
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript (Web Speech API)
 - **Data Scraping**: Wikipedia Python API
+- **Containerization**: Docker
 
 ## Project Structure
 
@@ -23,6 +24,8 @@ Eva-Assistant/
 ├── command_handler.py      # Logic for parsing and responding to voice commands
 ├── scraper.py              # Wikipedia integration for answering questions
 ├── requirements.txt        # Python dependencies
+├── Dockerfile              # Container image definition
+├── .dockerignore           # Files excluded from the Docker build context
 ├── static/
 │   ├── script.js           # Frontend logic (Speech Recognition & Synthesis)
 │   └── style.css           # Styling and animations
@@ -56,6 +59,22 @@ Eva-Assistant/
    ```
 
 4. **Open in Browser:**
+   Navigate to `http://127.0.0.1:5000` in your web browser.
+
+### Running with Docker
+
+1. **Build the image:**
+   ```bash
+   cd Eva-Assistant
+   docker build -t eva-assistant .
+   ```
+
+2. **Run the container:**
+   ```bash
+   docker run -p 5000:5000 eva-assistant
+   ```
+
+3. **Open in Browser:**
    Navigate to `http://127.0.0.1:5000` in your web browser.
 
 ## Usage
